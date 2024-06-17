@@ -1,4 +1,4 @@
 
-public class PlayerBullet {
+public class PlayerBullet extends Character{
 
 }
