@@ -7,13 +7,18 @@ public class GameFrame extends MyFrame {
 
 		addKeyListener(GameWorld.player);
 
+		GameWorld.enemies = new Vector<Enemy>();
+		GameWorld.enemies.add(new EnemyBase(100, 50, 1, 0));
+
 		while (true) {
 			clear();
 			GameWorld.player.draw(this);
 			GameWorld.player.move();
-			
+
 			movePlayerBullets();
-			
+			moveEnemies();
+
+
 			sleep(0.033);
 		}
 	}
@@ -31,6 +36,14 @@ public class GameFrame extends MyFrame {
 			} else {
 				i++;
 			}
+		}
+	}
+	
+	public void moveEnemies() {
+		for (int i = 0; i < GameWorld.enemies.size(); i++) {
+			Enemy e = GameWorld.enemies.get(i);
+			e.draw(this);
+			e.move();
 		}
 	}
 }
